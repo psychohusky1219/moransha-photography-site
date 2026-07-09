@@ -466,17 +466,6 @@ button {
   line-height: 1.08;
 }
 
-.search-field {
-  min-height: 46px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--white);
-  color: var(--ink);
-  padding: 0 0.85rem;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 0.95rem;
-}
-
 .story-section {
   position: relative;
   min-height: 600px;
@@ -881,54 +870,6 @@ textarea.form-control {
   font-size: 0.92rem;
 }
 
-.empty-state {
-  color: var(--muted);
-  font-family: "Inter", Arial, sans-serif;
-}
-
-.search-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 105;
-  display: grid;
-  place-items: start center;
-  background: rgba(248, 246, 242, 0.97);
-  padding: 7rem 1.5rem 2rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms ease;
-}
-
-.search-overlay.is-open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.search-panel {
-  width: min(100%, 760px);
-}
-
-.search-panel h2 {
-  margin: 0 0 1rem;
-  font-size: 3rem;
-  text-align: center;
-}
-
-.search-results {
-  display: grid;
-  gap: 0.8rem;
-  margin-top: 1rem;
-}
-
-.search-result {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  border-bottom: 1px solid var(--line);
-  padding: 0.9rem 0;
-  font-family: "Inter", Arial, sans-serif;
-}
-
 .mobile-menu {
   position: fixed;
   inset: 0;
@@ -1060,8 +1001,7 @@ textarea.form-control {
   .page-hero-content h1,
   .split-copy h2,
   .story-content h2,
-  .newsletter h2,
-  .search-panel h2 {
+  .newsletter h2 {
     font-size: 2.25rem;
   }
 
