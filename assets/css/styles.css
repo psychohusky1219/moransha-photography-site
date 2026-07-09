@@ -805,8 +805,18 @@ textarea.form-control {
 .newsletter-cta {
   min-width: 190px;
   min-height: 64px;
+  border-color: #2f6fed;
+  background: #2f6fed;
+  color: var(--white);
   padding: 0 2.4rem;
   font-size: 1rem;
+}
+
+.newsletter-cta:hover,
+.newsletter-cta:focus-visible {
+  border-color: #1f57c8;
+  background: #1f57c8;
+  color: var(--white);
 }
 
 .site-footer {
