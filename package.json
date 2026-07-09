@@ -1,0 +1,10 @@
+{
+  "name": "moransha-photography-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static service website for MoranSha Photography.",
+  "scripts": {
+    "dev": "node scripts/serve.cjs",
+    "start": "node scripts/serve.cjs"
+  }
+}
