@@ -39,7 +39,7 @@
   document.querySelector("[data-close-mobile]")?.addEventListener("click", closeMobileMenu);
 
   mobileMenu?.addEventListener("click", (event) => {
-    if (event.target.matches("a")) {
+    if (event.target.closest("a")) {
       closeMobileMenu();
     }
   });
