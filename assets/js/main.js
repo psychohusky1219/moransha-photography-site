@@ -44,17 +44,6 @@
     }
   });
 
-  document.querySelector("[data-newsletter]")?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const note = document.querySelector("[data-form-note]");
-
-    if (note) {
-      note.textContent = "Thank you. You are on the studio update list.";
-    }
-
-    event.currentTarget.reset();
-  });
-
   document.querySelector("[data-contact-form]")?.addEventListener("submit", (event) => {
     event.preventDefault();
     const note = document.querySelector("[data-contact-note]");
