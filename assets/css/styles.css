@@ -416,8 +416,12 @@ button {
 .page-hero-content .eyebrow {
   margin: 0 0 0.5rem;
   color: var(--white);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(1.15rem, 1.6vw, 1.65rem);
   font-style: italic;
-  font-weight: 800;
+  font-weight: 600;
+  line-height: 1.1;
+  text-transform: none;
 }
 
 .collection-grid {
