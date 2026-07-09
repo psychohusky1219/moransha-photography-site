@@ -166,25 +166,25 @@ button {
 }
 
 .brand {
-  display: grid;
-  justify-items: start;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
 }
 
-.brand-mark {
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
+.brand-logo {
+  display: block;
+  width: auto;
+  height: 58px;
+  max-width: 150px;
+  object-fit: contain;
 }
 
-.brand-name {
-  font-size: 1.55rem;
+.footer-brand .brand-logo {
+  height: 62px;
 }
 
-.brand-subtitle {
-  color: var(--muted);
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 0.7rem;
+.mobile-menu .brand-logo {
+  height: 54px;
 }
 
 .primary-nav {
@@ -921,7 +921,11 @@ textarea.form-control {
   }
 
   .brand {
-    justify-items: start;
+    align-items: center;
+  }
+
+  .brand-logo {
+    height: 52px;
   }
 
   .social-links,
@@ -970,8 +974,8 @@ textarea.form-control {
     width: min(100% - 32px, 1220px);
   }
 
-  .brand-name {
-    font-size: 1.25rem;
+  .brand-logo {
+    height: 48px;
   }
 
   .icon-button {
