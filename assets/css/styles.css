@@ -493,7 +493,7 @@ button {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: var(--charcoal);
+  background: linear-gradient(135deg, var(--ink) 0%, #263a2f 54%, var(--wine-dark) 100%);
   color: var(--white);
 }
 
@@ -501,7 +501,7 @@ button {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.48);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.18));
 }
 
 .story-content {
