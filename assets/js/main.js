@@ -44,15 +44,60 @@
     }
   });
 
-  document.querySelector("[data-contact-form]")?.addEventListener("submit", (event) => {
+  document.querySelector("[data-contact-form]")?.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const note = document.querySelector("[data-contact-note]");
+    const form = event.currentTarget;
+    const note = form.querySelector("[data-contact-note]");
+    const submitButton = form.querySelector("button[type='submit']");
 
     if (note) {
-      note.textContent = "Thank you. Your inquiry is ready for review.";
+      note.textContent = "Sending your inquiry...";
     }
 
-    event.currentTarget.reset();
+    if (submitButton) {
+      submitButton.disabled = true;
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        let errorMessage = "Something went wrong. Please try again or email us directly.";
+
+        try {
+          const data = await response.json();
+          const fieldErrors = data.errors?.map((error) => error.message).filter(Boolean);
+
+          if (fieldErrors?.length) {
+            errorMessage = fieldErrors.join(" ");
+          }
+        } catch {
+          // Keep the friendly fallback message if Formspree does not return JSON.
+        }
+
+        throw new Error(errorMessage);
+      }
+
+      if (note) {
+        note.textContent = "Thank you. Your inquiry has been sent.";
+      }
+
+      form.reset();
+    } catch (error) {
+      if (note) {
+        note.textContent = error.message;
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
+    }
   });
 
   document.addEventListener("keydown", (event) => {
