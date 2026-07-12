@@ -748,19 +748,22 @@ textarea.form-control {
   min-height: 580px;
 }
 
-.food-gallery-section {
+.food-gallery-section,
+.real-estate-gallery-section {
   background: var(--white);
   padding: 6px 0 0;
 }
 
-.food-gallery {
+.food-gallery,
+.real-estate-gallery {
   column-count: 2;
   column-gap: 6px;
   padding: 6px;
   background: var(--white);
 }
 
-.food-gallery img {
+.food-gallery img,
+.real-estate-gallery img {
   width: 100%;
   height: auto;
   display: block;
@@ -1002,7 +1005,8 @@ textarea.form-control {
     grid-template-columns: 1fr;
   }
 
-  .food-gallery {
+  .food-gallery,
+  .real-estate-gallery {
     column-count: 2;
   }
 
@@ -1074,17 +1078,20 @@ textarea.form-control {
     grid-template-columns: 1fr;
   }
 
-  .food-gallery-section {
+  .food-gallery-section,
+  .real-estate-gallery-section {
     padding-top: 4px;
   }
 
-  .food-gallery {
+  .food-gallery,
+  .real-estate-gallery {
     column-count: 1;
     column-gap: 4px;
     padding: 4px;
   }
 
-  .food-gallery img {
+  .food-gallery img,
+  .real-estate-gallery img {
     margin-bottom: 4px;
   }
 
