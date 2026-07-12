@@ -684,6 +684,12 @@ textarea.form-control {
   object-fit: cover;
 }
 
+.split-section img.about-portrait {
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
+}
+
 .split-copy {
   display: grid;
   gap: 1rem;
