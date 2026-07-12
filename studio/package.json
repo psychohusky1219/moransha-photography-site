@@ -1,0 +1,16 @@
+{
+  "name": "moransha-sanity-studio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "sanity dev --host 127.0.0.1 --port 3333",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "@sanity/vision": "latest",
+    "sanity": "latest",
+    "styled-components": "latest"
+  },
+  "devDependencies": {}
+}

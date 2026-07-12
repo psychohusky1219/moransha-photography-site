@@ -1,0 +1,7 @@
+{
+  "enabled": false,
+  "projectId": "replace-with-sanity-project-id",
+  "dataset": "production",
+  "apiVersion": "2025-02-19",
+  "useCdn": true
+}

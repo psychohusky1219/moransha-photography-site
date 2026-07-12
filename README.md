@@ -45,3 +45,15 @@ scripts/
 ## Deploy
 
 This is a static site. Push this folder to GitHub, then import the repository in Vercel. No build command is required.
+
+## CMS Testing
+
+Sanity CMS test scaffolding is included, but it does not change the live public pages yet.
+
+Open the local CMS preview after running `npm run dev`:
+
+```text
+http://127.0.0.1:3000/pages/cms-preview.html
+```
+
+See `CMS_SETUP.md` for the full Sanity setup steps.
