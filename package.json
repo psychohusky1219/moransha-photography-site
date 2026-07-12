@@ -5,8 +5,6 @@
   "description": "Static service website for MoranSha Photography.",
   "scripts": {
     "dev": "node scripts/serve.cjs",
-    "start": "node scripts/serve.cjs",
-    "cms:studio": "npm --prefix studio run dev",
-    "cms:studio:install": "npm --prefix studio install"
+    "start": "node scripts/serve.cjs"
   }
 }
