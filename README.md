@@ -40,8 +40,20 @@ assets/
   js/main.js
 scripts/
   serve.cjs
+studio/
+  Sanity editing dashboard
+api/
+  sanity-content.js
 ```
+
+## Edit Website Content
+
+The site is connected to Sanity project `843m1n6c`. See [CMS_SETUP.md](CMS_SETUP.md) for the first-time setup, editing, and publishing instructions.
+
+Hosted editor: `https://moransha-photography.sanity.studio/`
+
+The public pages keep their existing HTML and local photos as fallbacks. Published Sanity content is loaded through the same-origin `/api/sanity-content` endpoint.
 
 ## Deploy
 
-This is a static site. Push this folder to GitHub, then import the repository in Vercel. No build command is required.
+Push this folder to GitHub, then import the repository in Vercel. The public pages require no build command; Vercel automatically serves the content API from the `api` folder.

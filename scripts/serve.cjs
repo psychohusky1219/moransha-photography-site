@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const sanityContent = require("../api/sanity-content.js");
 
 const root = path.resolve(__dirname, "..");
 const port = Number(process.argv[2] || process.env.PORT || 3000);
@@ -19,6 +20,12 @@ const types = {
 
 const server = http.createServer((request, response) => {
   const url = new URL(request.url, `http://${request.headers.host || "localhost"}`);
+
+  if (url.pathname === "/api/sanity-content") {
+    sanityContent(request, response);
+    return;
+  }
+
   const requested = decodeURIComponent(url.pathname.replace(/^\/+/, "")) || "index.html";
   let filePath = path.resolve(root, requested);
 
