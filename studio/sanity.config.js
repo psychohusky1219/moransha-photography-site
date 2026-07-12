@@ -6,7 +6,7 @@ import {schemaTypes} from './schemaTypes/index.js'
 export default defineConfig({
   name: 'moransha',
   title: 'MoranSha Photography CMS',
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID || 'replace-with-project-id',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID || '843m1n6c',
   dataset: process.env.SANITY_STUDIO_DATASET || 'production',
   plugins: [structureTool(), visionTool()],
   schema: {

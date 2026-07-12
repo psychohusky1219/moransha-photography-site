@@ -1,6 +1,6 @@
 {
-  "enabled": false,
-  "projectId": "replace-with-sanity-project-id",
+  "enabled": true,
+  "projectId": "843m1n6c",
   "dataset": "production",
   "apiVersion": "2025-02-19",
   "useCdn": true
