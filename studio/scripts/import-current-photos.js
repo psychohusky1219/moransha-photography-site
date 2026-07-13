@@ -2,9 +2,10 @@ import {createReadStream, existsSync} from "node:fs";
 import {basename, resolve} from "node:path";
 import {getCliClient} from "sanity/cli";
 
-const client = getCliClient({apiVersion: "2025-02-19"});
+const client = getCliClient({apiVersion: "2025-02-19"}).withConfig({perspective: "raw"});
 const siteRoot = resolve(process.cwd(), "..");
 const migrationId = "migration.currentWebsitePhotos.v1";
+const forceGalleries = process.argv.includes("--force-galleries");
 
 const local = (path, alt) => ({kind: "local", path, alt, key: `local:${path}`});
 const remote = (url, filename, alt) => ({kind: "remote", url, filename, alt, key: `remote:${url}`});
@@ -171,8 +172,11 @@ const pageMedia = {
   termsConditionsPage: {heroImage: sources.termsHero, heroImageAlt: sources.termsHero.alt}
 };
 
+const mediaToPatch = forceGalleries
+  ? {foodPage: {gallery: foodGallery}, realEstatePage: {gallery: realEstateGallery}}
+  : pageMedia;
 const uniqueSources = new Map();
-Object.values(pageMedia).forEach((fields) => {
+Object.values(mediaToPatch).forEach((fields) => {
   Object.values(fields).forEach((value) => {
     if (Array.isArray(value)) value.forEach((source) => uniqueSources.set(source.key, source));
     else if (value?.key) uniqueSources.set(value.key, value);
@@ -219,7 +223,7 @@ const uploadAll = async () => {
 };
 
 const run = async () => {
-  if (await client.getDocument(migrationId)) {
+  if ((await client.getDocument(migrationId)) && !forceGalleries) {
     console.log("The current website photos have already been imported.");
     return;
   }
@@ -238,7 +242,7 @@ const run = async () => {
       alt: source.alt
     }));
 
-  for (const [documentId, fields] of Object.entries(pageMedia)) {
+  for (const [documentId, fields] of Object.entries(mediaToPatch)) {
     const values = {};
     Object.entries(fields).forEach(([field, value]) => {
       if (field === "gallery") values[field] = galleryValue(value, documentId === "foodPage" ? "food" : "estate");
@@ -249,18 +253,21 @@ const run = async () => {
     const targetIds = [documentId, `drafts.${documentId}`];
     for (const targetId of targetIds) {
       if (await client.getDocument(targetId)) {
-        await client.patch(targetId).setIfMissing(values).commit({autoGenerateArrayKeys: true});
+        const patch = client.patch(targetId);
+        await (forceGalleries ? patch.set(values) : patch.setIfMissing(values)).commit({autoGenerateArrayKeys: true});
       }
     }
     console.log(`Connected current photos to ${documentId}.`);
   }
 
-  await client.create({
-    _id: migrationId,
-    _type: "migrationMarker",
-    title: "Current website photos imported",
-    completedAt: new Date().toISOString()
-  });
+  if (!(await client.getDocument(migrationId))) {
+    await client.create({
+      _id: migrationId,
+      _type: "migrationMarker",
+      title: "Current website photos imported",
+      completedAt: new Date().toISOString()
+    });
+  }
   console.log("Photo migration complete. Every current website photo is now editable in Sanity.");
 };
 
