@@ -21,9 +21,14 @@
 
   const image = (selector, url, alt, root = document, width = 2200) => {
     const element = root.querySelector(selector);
-    if (!element) return;
-    if (url) element.src = `${url}?auto=format&fit=max&w=${width}&q=85`;
+    if (!element) return false;
+    if (!url) {
+      element.remove();
+      return false;
+    }
+    element.src = `${url}?auto=format&fit=max&w=${width}&q=85`;
     if (alt) element.alt = alt;
+    return true;
   };
 
   const renderCards = (selector, items, className) => {
@@ -45,11 +50,11 @@
   };
 
   const renderGallery = (selector, gallery) => {
-    if (!Array.isArray(gallery) || !gallery.length) return;
     const container = document.querySelector(selector);
     if (!container) return;
+    const photos = Array.isArray(gallery) ? gallery.filter((item) => item.url) : [];
     container.replaceChildren(
-      ...gallery.filter((item) => item.url).map((item, index) => {
+      ...photos.map((item, index) => {
         const photo = document.createElement("img");
         photo.src = `${item.url}?auto=format&fit=max&w=1800&q=85`;
         photo.alt = item.alt || `MoranSha photography gallery image ${index + 1}`;
@@ -58,6 +63,8 @@
         return photo;
       })
     );
+    const section = container.closest("section");
+    if (section) section.hidden = photos.length === 0;
   };
 
   const applySeo = (page) => {
@@ -70,7 +77,8 @@
     text(".page-hero-content .eyebrow", page.heroEyebrow);
     text(".page-hero-content h1", page.heroTitle);
     text(".page-hero-content h1 + p", page.heroIntro);
-    image(".page-hero-media", page.heroImageUrl, page.heroImageAlt);
+    const hasImage = image(".page-hero-media", page.heroImageUrl, page.heroImageAlt);
+    document.querySelector(".page-hero")?.classList.toggle("is-image-empty", !hasImage);
   };
 
   const applyGlobal = (settings) => {
@@ -108,18 +116,21 @@
   const applyHome = (page) => {
     text(".hero-title", page.heroTitle);
     text(".hero-kicker", page.heroTagline);
-    image(".hero-media", page.heroImageUrl, page.heroImageAlt);
+    const hasHeroImage = image(".hero-media", page.heroImageUrl, page.heroImageAlt);
+    document.querySelector(".hero")?.classList.toggle("is-image-empty", !hasHeroImage);
 
     const panels = document.querySelectorAll(".collection-panel");
     if (panels[0]) {
       text("h2", page.foodTitle, panels[0]);
       text(".btn", page.foodButtonLabel, panels[0]);
-      image("img", page.foodImageUrl, page.foodImageAlt, panels[0], 1800);
+      const hasImage = image("img", page.foodImageUrl, page.foodImageAlt, panels[0], 1800);
+      panels[0].classList.toggle("is-image-empty", !hasImage);
     }
     if (panels[1]) {
       text("h2", page.realEstateTitle, panels[1]);
       text(".btn", page.realEstateButtonLabel, panels[1]);
-      image("img", page.realEstateImageUrl, page.realEstateImageAlt, panels[1], 1800);
+      const hasImage = image("img", page.realEstateImageUrl, page.realEstateImageAlt, panels[1], 1800);
+      panels[1].classList.toggle("is-image-empty", !hasImage);
     }
 
     text(".story-content h2", page.storyTitle);
@@ -132,7 +143,8 @@
 
   const applyAbout = (page) => {
     applyHero(page);
-    image(".about-portrait", page.portraitImageUrl, page.portraitImageAlt, document, 1600);
+    const hasPortrait = image(".about-portrait", page.portraitImageUrl, page.portraitImageAlt, document, 1600);
+    document.querySelector(".split-section")?.classList.toggle("is-image-empty", !hasPortrait);
     text(".split-copy .eyebrow", page.approachEyebrow);
     text(".split-copy h2", page.approachTitle);
     text(".split-copy .btn", page.approachButtonLabel);
@@ -156,7 +168,8 @@
     const feature = sections[0];
     const coverage = sections[1];
     if (feature) {
-      image(".split-section > img", page.featureImageUrl, page.featureImageAlt, feature, 1800);
+      const hasFeatureImage = image(".split-section > img", page.featureImageUrl, page.featureImageAlt, feature, 1800);
+      feature.querySelector(".split-section")?.classList.toggle("is-image-empty", !hasFeatureImage);
       text(".split-copy .eyebrow", page.featureEyebrow, feature);
       text(".split-copy h2", page.featureTitle, feature);
       text(".split-copy h2 + p", page.featureText, feature);

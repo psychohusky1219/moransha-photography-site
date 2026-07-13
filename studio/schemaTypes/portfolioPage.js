@@ -25,7 +25,7 @@ export const portfolioPage = defineType({
     defineField({
       name: "gallery",
       title: "Photo gallery",
-      description: "Upload photos and drag them into the order you want.",
+      description: "Upload photos, drag them into a new order, or open a photo's menu and choose Remove. An empty gallery is hidden on the website.",
       type: "array",
       options: {layout: "grid"},
       of: [defineArrayMember({type: "galleryImage"})]

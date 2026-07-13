@@ -308,6 +308,11 @@ button {
   transform: translateY(-2px);
 }
 
+.hero.is-image-empty::after,
+.page-hero.is-image-empty::after {
+  background: linear-gradient(135deg, rgba(19, 49, 38, 0.96), rgba(93, 30, 34, 0.88));
+}
+
 .btn:disabled {
   cursor: not-allowed;
   opacity: 0.72;
@@ -470,6 +475,10 @@ button {
 
 .collection-panel:hover img {
   transform: scale(1.06);
+}
+
+.collection-panel.is-image-empty {
+  background: linear-gradient(135deg, var(--ink), #365444 58%, var(--wine-dark));
 }
 
 .collection-copy {
@@ -713,6 +722,11 @@ textarea.form-control {
   aspect-ratio: auto;
   height: auto;
   object-fit: contain;
+}
+
+.split-section.is-image-empty {
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
 }
 
 .split-copy {

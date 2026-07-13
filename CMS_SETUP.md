@@ -18,10 +18,17 @@ This creates only missing page records and never overwrites existing edits.
 
 1. Open **Content** in Sanity Studio.
 2. Choose the page or **Site Settings**.
-3. Change text, upload a photo, or drag gallery photos into a new order.
+3. Change text, upload or replace a photo, remove a photo, or drag gallery photos into a new order.
 4. Click **Publish**.
 
 The live website reads published content. Unpublished drafts are not shown to visitors. If Sanity is temporarily unavailable, the original HTML content and photos remain visible.
+
+### Remove a Photo
+
+- For a banner, portrait, or featured photo, open the photo field and choose **Remove**.
+- For a gallery photo, open that photo's menu and choose **Remove**.
+- To hide a whole gallery, remove every photo from the gallery.
+- Click **Publish** after the change. Empty photo areas use a clean colored background, and empty galleries are hidden.
 
 ## Run the Website Locally
 

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "sanity dev",
     "build": "sanity build",
-    "deploy": "sanity deploy"
+    "deploy": "sanity deploy",
+    "import:photos": "sanity exec scripts/import-current-photos.js --with-user-token"
   },
   "dependencies": {
     "@sanity/icons": "^3.7.4",

@@ -82,7 +82,7 @@ export function SetupTool() {
           <Stack space={3}>
             <Heading size={1}>How editing works</Heading>
             <Text>1. Open Content and choose a page.</Text>
-            <Text>2. Change wording, upload photos, or drag gallery photos into a new order.</Text>
+            <Text>2. Change wording, upload or remove photos, or drag gallery photos into a new order.</Text>
             <Text>3. Click Publish. The website uses the newly published content automatically.</Text>
           </Stack>
         </Card>
