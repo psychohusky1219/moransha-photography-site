@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/new-york",
+      "destination": "/pages/new-york.html"
+    }
+  ]
+}
