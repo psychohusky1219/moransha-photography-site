@@ -3,6 +3,10 @@
     {
       "source": "/new-york",
       "destination": "/pages/new-york.html"
+    },
+    {
+      "source": "/events",
+      "destination": "/pages/events.html"
     }
   ]
 }
