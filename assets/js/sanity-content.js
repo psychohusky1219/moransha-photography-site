@@ -7,6 +7,10 @@
     "/pages/faq.html": "faqPage",
     "/pages/collections/food-photography.html": "foodPage",
     "/pages/collections/real-estate.html": "realEstatePage",
+    "/new-york": "newYorkPage",
+    "/pages/new-york.html": "newYorkPage",
+    "/events": "eventsPage",
+    "/pages/events.html": "eventsPage",
     "/pages/policies/privacy.html": "privacyPage",
     "/pages/policies/terms.html": "termsPage",
     "/pages/policies/cancellations.html": "cancellationsPage",
@@ -67,10 +71,37 @@
     if (section) section.hidden = photos.length === 0;
   };
 
+  const renderArchiveGallery = (gallery) => {
+    const container = document.querySelector("[data-archive-gallery]");
+    if (!container) return;
+    const photos = Array.isArray(gallery) ? gallery.filter((item) => item.url) : [];
+    container.replaceChildren(
+      ...photos.map((item, index) => {
+        const figure = document.createElement("figure");
+        const photo = document.createElement("img");
+        figure.className = "archive-gallery-item";
+        photo.src = `${item.url}?auto=format&fit=max&w=1800&q=85`;
+        photo.alt = item.alt || `MoranSha photography gallery image ${index + 1}`;
+        photo.loading = index < 8 ? "eager" : "lazy";
+        photo.decoding = "async";
+        photo.addEventListener("load", () => photo.classList.add("is-ready"), {once: true});
+        if (photo.complete) photo.classList.add("is-ready");
+        figure.append(photo);
+        return figure;
+      })
+    );
+    const section = container.closest("section");
+    if (section) section.hidden = photos.length === 0;
+  };
+
   const applySeo = (page) => {
     if (page.seoTitle) document.title = page.seoTitle;
     const description = document.querySelector('meta[name="description"]');
     if (description && page.seoDescription) description.content = page.seoDescription;
+    const openGraphTitle = document.querySelector('meta[property="og:title"]');
+    if (openGraphTitle && page.seoTitle) openGraphTitle.content = page.seoTitle;
+    const openGraphDescription = document.querySelector('meta[property="og:description"]');
+    if (openGraphDescription && page.seoDescription) openGraphDescription.content = page.seoDescription;
   };
 
   const applyHero = (page) => {
@@ -197,6 +228,38 @@
     renderGallery(".food-gallery, .real-estate-gallery", page.gallery);
   };
 
+  const applyStandalone = (page) => {
+    applySeo(page);
+    text(".archive-kicker", page.heroEyebrow);
+    text(".archive-intro h1", page.heroTitle);
+    text(".newsletter-shell h2", page.ctaHeading);
+    text(".newsletter-shell h2 + p", page.ctaText);
+    text(".newsletter-cta", page.ctaButtonLabel);
+
+    const intro = document.querySelector(".archive-intro");
+    if (intro) {
+      let media = intro.querySelector(".archive-intro-media");
+      if (page.heroImageUrl) {
+        if (!media) {
+          media = document.createElement("img");
+          media.className = "archive-intro-media";
+          intro.prepend(media);
+        }
+        media.src = `${page.heroImageUrl}?auto=format&fit=max&w=2400&q=86`;
+        media.alt = page.heroImageAlt || "MoranSha Photography";
+        media.hidden = false;
+        intro.classList.add("has-photo");
+        intro.classList.remove("is-image-empty");
+      } else {
+        media?.remove();
+        intro.classList.remove("has-photo");
+        intro.classList.add("is-image-empty");
+      }
+    }
+
+    renderArchiveGallery(page.gallery);
+  };
+
   const applyContact = (page) => {
     applyHero(page);
     text(".booking-panel > .eyebrow", page.formEyebrow);
@@ -272,6 +335,7 @@
     if (pageId === "homePage") applyHome(page);
     else if (pageId === "aboutPage") applyAbout(page);
     else if (pageId === "foodPage" || pageId === "realEstatePage") applyPortfolio(page);
+    else if (pageId === "newYorkPage" || pageId === "eventsPage") applyStandalone(page);
     else if (pageId === "contactPage") applyContact(page);
     else if (pageId === "faqPage") applyFaq(page);
     else applyPolicy(page);

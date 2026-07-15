@@ -5,6 +5,7 @@ import {globalSettings} from "./globalSettings.js";
 import {homePage} from "./homePage.js";
 import {policyPage} from "./policyPage.js";
 import {portfolioPage} from "./portfolioPage.js";
+import {standalonePage} from "./standalonePage.js";
 import {card, galleryImage, policyBlock} from "./shared.js";
 
 export const schemaTypes = [
@@ -15,6 +16,7 @@ export const schemaTypes = [
   homePage,
   aboutPage,
   portfolioPage,
+  standalonePage,
   contactPage,
   faqPage,
   policyPage

@@ -7,6 +7,8 @@ const allowedPages = new Set([
   "aboutPage",
   "foodPage",
   "realEstatePage",
+  "newYorkPage",
+  "eventsPage",
   "contactPage",
   "faqPage",
   "privacyPage",

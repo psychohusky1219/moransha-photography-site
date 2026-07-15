@@ -32,6 +32,22 @@
   display: none;
 }
 
+.archive-intro.is-image-empty::after {
+  display: none;
+}
+
+.archive-intro.is-image-empty .archive-intro-content {
+  color: #1c3029;
+}
+
+.archive-intro--events.has-photo::after {
+  display: block;
+}
+
+.archive-intro--events.has-photo .archive-intro-content {
+  color: #fff;
+}
+
 .archive-intro-content {
   position: relative;
   z-index: 1;

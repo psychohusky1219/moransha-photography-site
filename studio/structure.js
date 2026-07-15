@@ -10,6 +10,7 @@ export const singletonTypes = new Set([
   "contactPage",
   "faqPage",
   "portfolioPage",
+  "standalonePage",
   "policyPage"
 ]);
 
@@ -25,6 +26,17 @@ export const structure = (S) =>
       singleton(S, "Real Estate", "portfolioPage", "realEstatePage"),
       singleton(S, "Contact", "contactPage", "contactPage"),
       singleton(S, "FAQ", "faqPage", "faqPage"),
+      S.divider(),
+      S.listItem()
+        .title("Standalone Pages")
+        .child(
+          S.list()
+            .title("Standalone Pages")
+            .items([
+              singleton(S, "New York", "standalonePage", "newYorkPage"),
+              singleton(S, "Events", "standalonePage", "eventsPage")
+            ])
+        ),
       S.divider(),
       S.listItem()
         .title("Policies")

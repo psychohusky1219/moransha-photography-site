@@ -1,6 +1,6 @@
 # MoranSha Website Editor
 
-Sanity Studio is the private editing dashboard for the website. It controls page wording, featured photos, galleries, FAQs, policy sections, contact details, social links, and the shared Get in Touch section.
+Sanity Studio is the private editing dashboard for the website. It controls page wording, featured photos, galleries, FAQs, policy sections, contact details, social links, the shared Get in Touch section, and the standalone New York and Events pages.
 
 Permanent editor: `https://moransha-photography.sanity.studio/`
 
@@ -20,6 +20,8 @@ This creates only missing page records and never overwrites existing edits.
 2. Choose the page or **Site Settings**.
 3. Change text, upload or replace a photo, remove a photo, or drag gallery photos into a new order.
 4. Click **Publish**.
+
+The unlisted New York and Events landing pages are grouped under **Standalone Pages**. Editing them does not add either page to the public website navigation.
 
 The live website reads published content. Unpublished drafts are not shown to visitors. If Sanity is temporarily unavailable, the original HTML content and photos remain visible.
 
