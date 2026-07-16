@@ -33,7 +33,7 @@ module.exports = async function sanityContent(request, response) {
     return;
   }
 
-  const query = `*[_id in ["globalSettings", "${pageId}"]]{..., "heroImageUrl": heroImage.asset->url, "portraitImageUrl": portraitImage.asset->url, "featureImageUrl": featureImage.asset->url, "foodImageUrl": foodImage.asset->url, "realEstateImageUrl": realEstateImage.asset->url, "gallery": coalesce(gallery[]{_key, alt, "filename": asset->originalFilename, "url": asset->url}, [])}`;
+  const query = `*[_id in ["globalSettings", "${pageId}"]]{..., "heroImageUrl": heroImage.asset->url, "portraitImageUrl": portraitImage.asset->url, "featureImageUrl": featureImage.asset->url, "foodImageUrl": foodImage.asset->url, "realEstateImageUrl": realEstateImage.asset->url, "gallery": coalesce(gallery[]{_key, alt, "filename": asset->originalFilename, "url": asset->url, "width": asset->metadata.dimensions.width, "height": asset->metadata.dimensions.height}, [])}`;
   const endpoint = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?query=${encodeURIComponent(query)}`;
 
   try {

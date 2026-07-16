@@ -74,14 +74,9 @@
   const renderArchiveGallery = (gallery) => {
     const container = document.querySelector("[data-archive-gallery]");
     if (!container) return;
-    const filenameSorter = new Intl.Collator(undefined, {numeric: true, sensitivity: "base"});
     const photos = Array.isArray(gallery)
       ? gallery
         .filter((item) => item.url)
-        .sort((first, second) => filenameSorter.compare(
-          first.filename || first.alt || "",
-          second.filename || second.alt || ""
-        ))
       : [];
     container.replaceChildren(
       ...photos.map((item, index) => {
@@ -90,6 +85,10 @@
         figure.className = "archive-gallery-item";
         photo.src = `${item.url}?auto=format&fit=max&w=1800&q=85`;
         photo.alt = item.alt || `MoranSha photography gallery image ${index + 1}`;
+        if (item.width && item.height) {
+          photo.width = item.width;
+          photo.height = item.height;
+        }
         photo.loading = index < 8 ? "eager" : "lazy";
         photo.decoding = "async";
         photo.addEventListener("load", () => photo.classList.add("is-ready"), {once: true});

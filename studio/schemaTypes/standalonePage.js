@@ -21,7 +21,7 @@ export const standalonePage = defineType({
     defineField({
       name: "gallery",
       title: "Photo gallery",
-      description: "Upload or remove photos here. The website automatically displays them in natural filename order (for example, Photo-2 before Photo-10). An empty gallery is hidden.",
+      description: "Upload, remove, or drag photos into the exact order they should appear on the website. An empty gallery is hidden.",
       type: "array",
       group: "gallery",
       options: {layout: "grid"},
