@@ -9,7 +9,11 @@
         headers: {Accept: "application/json"}
       });
       if (!response.ok) throw new Error(`Gallery data returned ${response.status}`);
-      const photos = await response.json();
+      const filenameSorter = new Intl.Collator(undefined, {numeric: true, sensitivity: "base"});
+      const photos = (await response.json()).sort((first, second) => filenameSorter.compare(
+        decodeURIComponent(first.path.split("/").pop()),
+        decodeURIComponent(second.path.split("/").pop())
+      ));
       if (document.documentElement.dataset.contentSource === "sanity") return;
 
       const figures = photos.map((item, index) => {

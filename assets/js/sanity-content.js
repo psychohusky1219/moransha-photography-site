@@ -74,7 +74,15 @@
   const renderArchiveGallery = (gallery) => {
     const container = document.querySelector("[data-archive-gallery]");
     if (!container) return;
-    const photos = Array.isArray(gallery) ? gallery.filter((item) => item.url) : [];
+    const filenameSorter = new Intl.Collator(undefined, {numeric: true, sensitivity: "base"});
+    const photos = Array.isArray(gallery)
+      ? gallery
+        .filter((item) => item.url)
+        .sort((first, second) => filenameSorter.compare(
+          first.filename || first.alt || "",
+          second.filename || second.alt || ""
+        ))
+      : [];
     container.replaceChildren(
       ...photos.map((item, index) => {
         const figure = document.createElement("figure");

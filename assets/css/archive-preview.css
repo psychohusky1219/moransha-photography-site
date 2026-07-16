@@ -93,7 +93,7 @@
 .archive-gallery {
   width: 100%;
   margin-inline: auto;
-  column-count: 2;
+  column-count: 4;
   column-gap: 6px;
 }
 
@@ -137,6 +137,10 @@
   .archive-intro h1 {
     max-width: 45rem;
   }
+
+  .archive-gallery {
+    column-count: 2;
+  }
 }
 
 @media (max-width: 560px) {
@@ -162,7 +166,6 @@
   }
 
   .archive-gallery {
-    column-count: 1;
     column-gap: 4px;
   }
 
