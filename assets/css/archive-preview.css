@@ -137,13 +137,9 @@
   .archive-intro h1 {
     max-width: 45rem;
   }
-
-  .archive-gallery {
-    column-count: 2;
-  }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 640px) {
   .archive-intro {
     min-height: 27rem;
   }
@@ -166,6 +162,7 @@
   }
 
   .archive-gallery {
+    column-count: 2;
     column-gap: 4px;
   }
 
