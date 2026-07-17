@@ -51,7 +51,7 @@ export function SetupTool() {
         <Stack space={3}>
           <Heading size={3}>MoranSha Website Editor</Heading>
           <Text size={2} muted>
-            This Studio controls the wording, featured photos, contact details, FAQs, policies, portfolio galleries, and standalone landing pages on the website.
+            This Studio controls the wording, pricing, featured photos, contact details, FAQs, policies, portfolio galleries, and standalone landing pages on the website.
           </Text>
         </Stack>
 

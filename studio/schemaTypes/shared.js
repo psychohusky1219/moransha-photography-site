@@ -38,14 +38,15 @@ export const policyBlock = defineType({
   preview: {select: {title: "title", subtitle: "text"}}
 });
 
-export const cardArrayField = (name, title, description) =>
+export const cardArrayField = (name, title, description, group) =>
   defineField({
     name,
     title,
     description,
     type: "array",
     of: [defineArrayMember({type: "card"})],
-    validation: (Rule) => Rule.max(6)
+    validation: (Rule) => Rule.max(6),
+    ...(group ? {group} : {})
   });
 
 export const imageField = (name, title, group) =>

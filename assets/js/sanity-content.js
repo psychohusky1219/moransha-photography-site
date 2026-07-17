@@ -7,6 +7,8 @@
     "/pages/faq.html": "faqPage",
     "/pages/collections/food-photography.html": "foodPage",
     "/pages/collections/real-estate.html": "realEstatePage",
+    "/price": "pricingPage",
+    "/pages/pricing.html": "pricingPage",
     "/new-york": "newYorkPage",
     "/pages/new-york.html": "newYorkPage",
     "/events": "eventsPage",
@@ -319,6 +321,94 @@
     text(".cta-band .btn", page.ctaButtonLabel);
   };
 
+  const applyPricing = (page) => {
+    applyHero(page);
+
+    const packagesSection = document.querySelector(".pricing-section");
+    if (packagesSection) {
+      text(".section-heading .eyebrow", page.packagesEyebrow, packagesSection);
+      text(".section-heading h2", page.packagesTitle, packagesSection);
+      text(".section-heading h2 + p", page.packagesIntro, packagesSection);
+    }
+
+    if (Array.isArray(page.packages) && page.packages.length) {
+      const createPriceCard = (item) => {
+          const article = document.createElement("article");
+          article.className = `price-card${item.featured ? " is-featured" : ""}`;
+
+          if (item.featured && item.badge) {
+            const badge = document.createElement("p");
+            badge.className = "price-badge";
+            badge.textContent = item.badge;
+            article.append(badge);
+          }
+
+          const headingGroup = document.createElement("div");
+          const label = document.createElement("p");
+          const heading = document.createElement("h3");
+          const price = document.createElement("p");
+          const priceNote = document.createElement("p");
+          label.className = "price-card-label";
+          price.className = "price-value";
+          priceNote.className = "price-note";
+          label.textContent = item.serviceLabel || "";
+          heading.textContent = item.title || "";
+          price.textContent = item.price || "Custom quote";
+          priceNote.textContent = item.priceNote || "";
+          headingGroup.append(label, heading, price, priceNote);
+
+          const description = document.createElement("p");
+          description.className = "price-description";
+          description.textContent = item.description || "";
+
+          const features = document.createElement("ul");
+          features.className = "price-features";
+          (Array.isArray(item.features) ? item.features : []).forEach((feature) => {
+            const row = document.createElement("li");
+            row.textContent = feature;
+            features.append(row);
+          });
+
+          const button = document.createElement("a");
+          button.className = `btn ${item.featured ? "btn-secondary" : "btn-outline"}`;
+          button.href = "/pages/contact.html";
+          button.textContent = item.buttonLabel || "Request Pricing";
+          article.append(headingGroup, description, features, button);
+          return article;
+      };
+
+      const inferCategory = (item) => {
+        if (["food", "realEstate", "events"].includes(item.category)) return item.category;
+        const label = (item.serviceLabel || "").toLowerCase();
+        if (label.includes("real estate")) return "realEstate";
+        if (label.includes("event")) return "events";
+        return "food";
+      };
+
+      ["food", "realEstate", "events"].forEach((category) => {
+        const panel = document.querySelector(`[data-pricing-panel="${category}"]`);
+        const container = panel?.querySelector(".pricing-grid");
+        if (!container) return;
+        const items = page.packages.filter((item) => inferCategory(item) === category);
+        container.replaceChildren(...items.map(createPriceCard));
+        container.classList.toggle("is-single", items.length <= 1);
+      });
+    }
+
+    const detailsSection = document.querySelector(".pricing-details-section");
+    if (detailsSection) {
+      text(".section-heading .eyebrow", page.detailsEyebrow, detailsSection);
+      text(".section-heading h2", page.detailsTitle, detailsSection);
+    }
+    renderCards(".pricing-details-grid", page.details, "content-card");
+    text(".pricing-note h3", page.noteTitle);
+    text(".pricing-note p", page.noteText);
+    text(".newsletter-shell h2", page.ctaHeading);
+    text(".newsletter-shell h2 + p", page.ctaText);
+    text(".newsletter-cta", page.ctaButtonLabel);
+    document.dispatchEvent(new CustomEvent("pricing:updated"));
+  };
+
   const applyPolicy = (page) => {
     applyHero(page);
     if (!Array.isArray(page.sections) || !page.sections.length) return;
@@ -343,6 +433,7 @@
     else if (pageId === "aboutPage") applyAbout(page);
     else if (pageId === "foodPage" || pageId === "realEstatePage") applyPortfolio(page);
     else if (pageId === "newYorkPage" || pageId === "eventsPage") applyStandalone(page);
+    else if (pageId === "pricingPage") applyPricing(page);
     else if (pageId === "contactPage") applyContact(page);
     else if (pageId === "faqPage") applyFaq(page);
     else applyPolicy(page);

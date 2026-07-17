@@ -26,7 +26,13 @@ const server = http.createServer((request, response) => {
     return;
   }
 
-  const requested = decodeURIComponent(url.pathname.replace(/^\/+/, "")) || "index.html";
+  const pageRoutes = {
+    "/price": "pages/pricing.html",
+    "/new-york": "pages/new-york.html",
+    "/events": "pages/events.html"
+  };
+
+  const requested = pageRoutes[url.pathname] || decodeURIComponent(url.pathname.replace(/^\/+/, "")) || "index.html";
   let filePath = path.resolve(root, requested);
 
   if (!filePath.startsWith(root)) {

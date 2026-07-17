@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/price",
+      "destination": "/pages/pricing.html"
+    },
+    {
       "source": "/new-york",
       "destination": "/pages/new-york.html"
     },

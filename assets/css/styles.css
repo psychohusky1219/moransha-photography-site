@@ -775,6 +775,206 @@ textarea.form-control {
   font-size: 0.95rem;
 }
 
+.pricing-tabs {
+  display: grid;
+  width: min(100%, 760px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  margin: 0 auto 2.25rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #e9e7e1;
+  padding: 4px;
+}
+
+.pricing-tab {
+  min-width: 0;
+  min-height: 48px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  padding: 0.7rem 1rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.pricing-tab:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.pricing-tab[aria-selected="true"] {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.pricing-tab:focus-visible {
+  outline: 3px solid var(--wine);
+  outline-offset: 2px;
+}
+
+.pricing-panel[hidden],
+.pricing-details-section[hidden] {
+  display: none;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.pricing-grid.is-single {
+  grid-template-columns: minmax(0, 31rem);
+  justify-content: center;
+}
+
+.price-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 34rem;
+  flex-direction: column;
+  gap: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  padding: 1.6rem;
+}
+
+.price-card.is-featured {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.price-badge {
+  align-self: flex-start;
+  margin: 0;
+  border-radius: 4px;
+  background: var(--wine);
+  color: var(--white);
+  padding: 0.3rem 0.55rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.price-card-label {
+  margin: 0 0 0.45rem;
+  color: var(--wine);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.is-featured .price-card-label {
+  color: #f0c7c8;
+}
+
+.price-card h3 {
+  margin: 0;
+  font-size: 1.65rem;
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.price-value {
+  margin: 1.4rem 0 0;
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.price-note,
+.price-description,
+.price-features {
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.price-note {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.price-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.price-card.is-featured .price-note,
+.price-card.is-featured .price-description {
+  color: #d8dfd7;
+}
+
+.price-features {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.price-features li {
+  position: relative;
+  padding-left: 1.15rem;
+}
+
+.price-features li::before {
+  content: "";
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--wine);
+}
+
+.price-card.is-featured .price-features li::before {
+  background: #f0c7c8;
+}
+
+.price-card .btn {
+  width: 100%;
+  margin-top: auto;
+  text-align: center;
+}
+
+.pricing-details-section {
+  background: var(--white);
+}
+
+.pricing-note {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: 2rem;
+  margin-top: 3rem;
+  border-top: 1px solid var(--line);
+  padding-top: 2rem;
+}
+
+.pricing-note h3 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.pricing-note p {
+  margin: 0;
+  color: var(--muted);
+  font-family: "Inter", Arial, sans-serif;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -1050,6 +1250,10 @@ textarea.form-control {
     grid-template-columns: 1fr;
   }
 
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .food-gallery,
   .real-estate-gallery {
     column-count: 2;
@@ -1120,8 +1324,26 @@ textarea.form-control {
   .collection-grid,
   .service-points,
   .form-grid,
-  .footer-grid {
+  .footer-grid,
+  .pricing-grid,
+  .pricing-note {
     grid-template-columns: 1fr;
+  }
+
+  .price-card {
+    min-height: 0;
+  }
+
+  .pricing-tabs {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-tab {
+    min-height: 58px;
+    padding: 0.6rem 0.35rem;
+    font-size: 0.72rem;
+    line-height: 1.25;
   }
 
   .food-gallery-section,
