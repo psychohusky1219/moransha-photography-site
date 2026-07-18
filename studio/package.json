@@ -8,6 +8,7 @@
     "deploy": "sanity deploy",
     "seed:pricing": "sanity exec scripts/create-pricing-page.js --with-user-token",
     "update:pricing": "sanity exec scripts/update-real-estate-pricing.js --with-user-token",
+    "update:navigation": "sanity exec scripts/update-navigation-labels.js --with-user-token",
     "import:photos": "sanity exec scripts/import-current-photos.js --with-user-token",
     "import:standalone": "sanity exec scripts/import-standalone-pages.js --with-user-token"
   },

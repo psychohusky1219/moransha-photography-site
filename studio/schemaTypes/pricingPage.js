@@ -9,7 +9,7 @@ export const pricingPackage = defineType({
     defineField({
       name: "category",
       title: "Service tab",
-      description: "Choose which tab should display this package on the Price page.",
+      description: "Choose which tab should display this package on the Prices page.",
       type: "string",
       options: {
         layout: "radio",
@@ -45,7 +45,7 @@ export const pricingPackage = defineType({
 
 export const pricingPage = defineType({
   name: "pricingPage",
-  title: "Price",
+  title: "Prices",
   type: "document",
   groups: [
     {name: "hero", title: "Top banner"},
@@ -83,5 +83,5 @@ export const pricingPage = defineType({
     defineField({name: "ctaText", title: "Call-to-action text", type: "text", rows: 3, group: "cta"}),
     defineField({name: "ctaButtonLabel", title: "Button label", type: "string", group: "cta"})
   ],
-  preview: {prepare: () => ({title: "Price"})}
+  preview: {prepare: () => ({title: "Prices"})}
 });

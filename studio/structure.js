@@ -25,7 +25,7 @@ export const structure = (S) =>
       singleton(S, "About", "aboutPage", "aboutPage"),
       singleton(S, "Food Photography", "portfolioPage", "foodPage"),
       singleton(S, "Real Estate", "portfolioPage", "realEstatePage"),
-      singleton(S, "Price", "pricingPage", "pricingPage"),
+      singleton(S, "Prices", "pricingPage", "pricingPage"),
       singleton(S, "Contact", "contactPage", "contactPage"),
       singleton(S, "FAQ", "faqPage", "faqPage"),
       S.divider(),

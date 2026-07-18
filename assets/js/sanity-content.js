@@ -123,6 +123,21 @@
 
   const applyGlobal = (settings) => {
     if (!settings) return;
+    const navigationLabels = new Map([
+      ["/", settings.navHomeLabel],
+      ["/index.html", settings.navHomeLabel],
+      ["/pages/collections/food-photography.html", settings.navFoodLabel],
+      ["/pages/collections/real-estate.html", settings.navRealEstateLabel],
+      ["/price", settings.navPricingLabel],
+      ["/pages/pricing.html", settings.navPricingLabel],
+      ["/pages/about.html", settings.navAboutLabel],
+      ["/pages/contact.html", settings.navContactLabel]
+    ]);
+    document.querySelectorAll(".primary-nav a, .mobile-menu nav > a").forEach((anchor) => {
+      const label = navigationLabels.get(anchor.pathname);
+      if (label) anchor.textContent = label;
+    });
+
     text(".newsletter-shell h2", settings.ctaHeading);
     text(".newsletter-shell h2 + p", settings.ctaText);
     text(".newsletter-cta", settings.ctaButtonLabel);
