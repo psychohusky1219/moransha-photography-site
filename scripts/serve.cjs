@@ -26,8 +26,18 @@ const server = http.createServer((request, response) => {
     return;
   }
 
+  const pageRedirects = {
+    "/price": "/pages/prices.html",
+    "/pages/pricing.html": "/pages/prices.html"
+  };
+
+  if (pageRedirects[url.pathname]) {
+    response.writeHead(308, {location: pageRedirects[url.pathname]});
+    response.end();
+    return;
+  }
+
   const pageRoutes = {
-    "/price": "pages/pricing.html",
     "/new-york": "pages/new-york.html",
     "/events": "pages/events.html"
   };

@@ -1,9 +1,17 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/price",
-      "destination": "/pages/pricing.html"
+      "destination": "/pages/prices.html",
+      "permanent": true
     },
+    {
+      "source": "/pages/pricing.html",
+      "destination": "/pages/prices.html",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
     {
       "source": "/new-york",
       "destination": "/pages/new-york.html"

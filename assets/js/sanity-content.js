@@ -8,6 +8,7 @@
     "/pages/collections/food-photography.html": "foodPage",
     "/pages/collections/real-estate.html": "realEstatePage",
     "/price": "pricingPage",
+    "/pages/prices.html": "pricingPage",
     "/pages/pricing.html": "pricingPage",
     "/new-york": "newYorkPage",
     "/pages/new-york.html": "newYorkPage",
@@ -129,6 +130,7 @@
       ["/pages/collections/food-photography.html", settings.navFoodLabel],
       ["/pages/collections/real-estate.html", settings.navRealEstateLabel],
       ["/price", settings.navPricingLabel],
+      ["/pages/prices.html", settings.navPricingLabel],
       ["/pages/pricing.html", settings.navPricingLabel],
       ["/pages/about.html", settings.navAboutLabel],
       ["/pages/contact.html", settings.navContactLabel]
