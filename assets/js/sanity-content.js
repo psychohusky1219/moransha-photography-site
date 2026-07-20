@@ -2,21 +2,31 @@
   const pageIds = {
     "/": "homePage",
     "/index.html": "homePage",
+    "/about": "aboutPage",
     "/pages/about.html": "aboutPage",
+    "/contact": "contactPage",
     "/pages/contact.html": "contactPage",
+    "/faq": "faqPage",
     "/pages/faq.html": "faqPage",
+    "/food-photography": "foodPage",
     "/pages/collections/food-photography.html": "foodPage",
+    "/real-estate": "realEstatePage",
     "/pages/collections/real-estate.html": "realEstatePage",
     "/price": "pricingPage",
+    "/prices": "pricingPage",
     "/pages/prices.html": "pricingPage",
     "/pages/pricing.html": "pricingPage",
     "/new-york": "newYorkPage",
     "/pages/new-york.html": "newYorkPage",
     "/events": "eventsPage",
     "/pages/events.html": "eventsPage",
+    "/privacy": "privacyPage",
     "/pages/policies/privacy.html": "privacyPage",
+    "/terms": "termsPage",
     "/pages/policies/terms.html": "termsPage",
+    "/cancellations": "cancellationsPage",
     "/pages/policies/cancellations.html": "cancellationsPage",
+    "/terms-and-conditions": "termsConditionsPage",
     "/pages/policies/terms-and-conditions.html": "termsConditionsPage"
   };
 
@@ -127,12 +137,17 @@
     const navigationLabels = new Map([
       ["/", settings.navHomeLabel],
       ["/index.html", settings.navHomeLabel],
+      ["/food-photography", settings.navFoodLabel],
       ["/pages/collections/food-photography.html", settings.navFoodLabel],
+      ["/real-estate", settings.navRealEstateLabel],
       ["/pages/collections/real-estate.html", settings.navRealEstateLabel],
       ["/price", settings.navPricingLabel],
+      ["/prices", settings.navPricingLabel],
       ["/pages/prices.html", settings.navPricingLabel],
       ["/pages/pricing.html", settings.navPricingLabel],
+      ["/about", settings.navAboutLabel],
       ["/pages/about.html", settings.navAboutLabel],
+      ["/contact", settings.navContactLabel],
       ["/pages/contact.html", settings.navContactLabel]
     ]);
     document.querySelectorAll(".primary-nav a, .mobile-menu nav > a").forEach((anchor) => {
@@ -388,7 +403,7 @@
 
           const button = document.createElement("a");
           button.className = `btn ${item.featured ? "btn-secondary" : "btn-outline"}`;
-          button.href = "/pages/contact.html";
+          button.href = "/contact";
           button.textContent = item.buttonLabel || "Request Pricing";
           article.append(headingGroup, description, features, button);
           return article;

@@ -88,6 +88,10 @@
         note.textContent = "Thank you. Your inquiry has been sent.";
       }
 
+      if (typeof gtag === "function") {
+        gtag("event", "form_submit_success", { form_id: "contact" });
+      }
+
       form.reset();
     } catch (error) {
       if (note) {

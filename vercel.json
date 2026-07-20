@@ -2,16 +2,105 @@
   "redirects": [
     {
       "source": "/price",
-      "destination": "/pages/prices.html",
+      "destination": "/prices",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/pages/pricing.html",
-      "destination": "/pages/prices.html",
+      "destination": "/prices",
+      "permanent": true
+    },
+    {
+      "source": "/pages/prices.html",
+      "destination": "/prices",
+      "permanent": true
+    },
+    {
+      "source": "/pages/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/pages/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/pages/faq.html",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/pages/events.html",
+      "destination": "/events",
+      "permanent": true
+    },
+    {
+      "source": "/pages/new-york.html",
+      "destination": "/new-york",
+      "permanent": true
+    },
+    {
+      "source": "/pages/collections/food-photography.html",
+      "destination": "/food-photography",
+      "permanent": true
+    },
+    {
+      "source": "/pages/collections/real-estate.html",
+      "destination": "/real-estate",
+      "permanent": true
+    },
+    {
+      "source": "/pages/policies/privacy.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/pages/policies/terms.html",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/pages/policies/cancellations.html",
+      "destination": "/cancellations",
+      "permanent": true
+    },
+    {
+      "source": "/pages/policies/terms-and-conditions.html",
+      "destination": "/terms-and-conditions",
       "permanent": true
     }
   ],
   "rewrites": [
+    {
+      "source": "/contact",
+      "destination": "/pages/contact.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/pages/about.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/pages/faq.html"
+    },
+    {
+      "source": "/prices",
+      "destination": "/pages/prices.html"
+    },
+    {
+      "source": "/food-photography",
+      "destination": "/pages/collections/food-photography.html"
+    },
+    {
+      "source": "/real-estate",
+      "destination": "/pages/collections/real-estate.html"
+    },
     {
       "source": "/new-york",
       "destination": "/pages/new-york.html"
@@ -19,6 +108,22 @@
     {
       "source": "/events",
       "destination": "/pages/events.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/pages/policies/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/pages/policies/terms.html"
+    },
+    {
+      "source": "/cancellations",
+      "destination": "/pages/policies/cancellations.html"
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/pages/policies/terms-and-conditions.html"
     }
   ]
 }
