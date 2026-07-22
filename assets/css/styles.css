@@ -106,11 +106,39 @@ button {
 
 .header-shell {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: 1.6rem;
   min-height: var(--header-height);
   padding: 0.45rem 0;
+}
+
+.header-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.header-phone:hover,
+.header-phone:focus-visible {
+  background: #ece8df;
+  outline: 0;
+  transform: translateY(-1px);
+}
+
+.header-phone-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .social-links,
@@ -1206,7 +1234,7 @@ textarea.form-control {
   }
 
   .header-shell {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     min-height: 84px;
     padding: 1rem 0;
   }
@@ -1282,6 +1310,25 @@ textarea.form-control {
   .icon-button {
     width: 38px;
     height: 38px;
+  }
+
+  .header-phone {
+    gap: 0;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .header-phone-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
   }
 
   .hero {

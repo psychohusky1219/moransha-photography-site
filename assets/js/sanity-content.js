@@ -180,7 +180,14 @@
     if (settings.phoneLink) {
       document.querySelectorAll('a[href^="tel:"]').forEach((anchor) => {
         anchor.href = `tel:${settings.phoneLink}`;
-        if (settings.phoneDisplay) anchor.textContent = settings.phoneDisplay;
+        if (!settings.phoneDisplay) return;
+        const textTarget = anchor.querySelector(".header-phone-text");
+        if (textTarget) {
+          textTarget.textContent = settings.phoneDisplay;
+          anchor.setAttribute("aria-label", `Call MoranSha Photography at ${settings.phoneDisplay}`);
+        } else {
+          anchor.textContent = settings.phoneDisplay;
+        }
       });
     }
   };
