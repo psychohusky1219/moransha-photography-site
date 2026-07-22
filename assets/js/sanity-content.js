@@ -183,12 +183,6 @@
         if (!settings.phoneDisplay) return;
         if (anchor.hasAttribute("data-static-label")) {
           anchor.setAttribute("aria-label", `Call MoranSha Photography at ${settings.phoneDisplay}`);
-          return;
-        }
-        const textTarget = anchor.querySelector(".header-phone-text");
-        if (textTarget) {
-          textTarget.textContent = settings.phoneDisplay;
-          anchor.setAttribute("aria-label", `Call MoranSha Photography at ${settings.phoneDisplay}`);
         } else {
           anchor.textContent = settings.phoneDisplay;
         }
