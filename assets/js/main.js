@@ -160,6 +160,30 @@
     closeMobileMenu();
   });
 
+  const mobileCtaBar = document.querySelector(".mobile-cta-bar");
+
+  if (mobileCtaBar) {
+    const revealThreshold = 240;
+    let ticking = false;
+
+    const updateCtaBarVisibility = () => {
+      mobileCtaBar.classList.toggle("is-visible", window.scrollY > revealThreshold);
+      ticking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(updateCtaBarVisibility);
+      },
+      { passive: true }
+    );
+
+    updateCtaBarVisibility();
+  }
+
   const yearEl = document.querySelector("[data-year]");
 
   if (yearEl) {

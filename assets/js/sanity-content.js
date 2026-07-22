@@ -181,6 +181,10 @@
       document.querySelectorAll('a[href^="tel:"]').forEach((anchor) => {
         anchor.href = `tel:${settings.phoneLink}`;
         if (!settings.phoneDisplay) return;
+        if (anchor.hasAttribute("data-static-label")) {
+          anchor.setAttribute("aria-label", `Call MoranSha Photography at ${settings.phoneDisplay}`);
+          return;
+        }
         const textTarget = anchor.querySelector(".header-phone-text");
         if (textTarget) {
           textTarget.textContent = settings.phoneDisplay;
