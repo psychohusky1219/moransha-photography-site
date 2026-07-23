@@ -160,14 +160,23 @@
     closeMobileMenu();
   });
 
+  const siteHeader = document.querySelector(".site-header");
   const mobileCtaBar = document.querySelector(".mobile-cta-bar");
 
-  if (mobileCtaBar) {
-    const revealThreshold = 240;
+  if (siteHeader || mobileCtaBar) {
+    const revealBuffer = 80;
+    let lastScrollY = window.scrollY;
     let ticking = false;
 
-    const updateCtaBarVisibility = () => {
-      mobileCtaBar.classList.toggle("is-visible", window.scrollY > revealThreshold);
+    const updateScrollState = () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      const shouldHideHeader = scrollingDown && currentScrollY > revealBuffer;
+
+      siteHeader?.classList.toggle("is-hidden", shouldHideHeader);
+      mobileCtaBar?.classList.toggle("is-visible", shouldHideHeader);
+
+      lastScrollY = currentScrollY;
       ticking = false;
     };
 
@@ -176,12 +185,12 @@
       () => {
         if (ticking) return;
         ticking = true;
-        requestAnimationFrame(updateCtaBarVisibility);
+        requestAnimationFrame(updateScrollState);
       },
       { passive: true }
     );
 
-    updateCtaBarVisibility();
+    updateScrollState();
   }
 
   const yearEl = document.querySelector("[data-year]");
