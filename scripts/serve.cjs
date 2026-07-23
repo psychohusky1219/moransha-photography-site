@@ -1,9 +1,24 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const sanityContent = require("../api/sanity-content.js");
 
 const root = path.resolve(__dirname, "..");
+
+const envLocalPath = path.join(root, ".env.local");
+if (fs.existsSync(envLocalPath)) {
+  fs.readFileSync(envLocalPath, "utf8")
+    .split(/\r?\n/)
+    .forEach((line) => {
+      const match = line.match(/^([A-Z0-9_]+)=(.*)$/i);
+      if (match && !process.env[match[1]]) {
+        process.env[match[1]] = match[2];
+      }
+    });
+}
+
+const sanityContent = require("../api/sanity-content.js");
+const googleReviews = require("../api/google-reviews.js");
+
 const port = Number(process.argv[2] || process.env.PORT || 3000);
 
 const types = {
@@ -23,6 +38,11 @@ const server = http.createServer((request, response) => {
 
   if (url.pathname === "/api/sanity-content") {
     sanityContent(request, response);
+    return;
+  }
+
+  if (url.pathname === "/api/google-reviews") {
+    googleReviews(request, response);
     return;
   }
 

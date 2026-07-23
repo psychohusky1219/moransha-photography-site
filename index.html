@@ -202,6 +202,27 @@
         </div>
       </section>
 
+      <section class="section reviews-section" aria-labelledby="reviews-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Client reviews</p>
+            <h2 id="reviews-title">What Our Clients Say</h2>
+          </div>
+          <div class="reviews-summary" data-reviews-summary hidden>
+            <div class="reviews-rating">
+              <span class="reviews-stars" data-reviews-stars aria-hidden="true"></span>
+              <span class="reviews-score" data-reviews-score></span>
+            </div>
+            <p class="reviews-count" data-reviews-count></p>
+            <a class="btn btn-outline" data-reviews-write href="#" target="_blank" rel="noopener noreferrer">Write a Review</a>
+          </div>
+          <div class="reviews-grid" data-reviews-grid></div>
+          <div class="reviews-fallback" data-reviews-fallback hidden>
+            <a class="btn btn-primary" data-reviews-fallback-link href="#" target="_blank" rel="noopener noreferrer">See Our Reviews on Google</a>
+          </div>
+        </div>
+      </section>
+
       <section class="section newsletter" aria-labelledby="newsletter-title">
         <div class="container newsletter-shell">
           <div>
@@ -316,6 +337,7 @@
     </div>
 
     <script src="assets/js/sanity-content.js" defer></script>
+    <script src="assets/js/google-reviews.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>
