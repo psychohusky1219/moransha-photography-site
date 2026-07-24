@@ -1674,6 +1674,14 @@ textarea.form-control {
     grid-template-columns: 1fr;
   }
 
+  .footer-grid > .footer-contact {
+    order: 3;
+  }
+
+  .footer-grid > div:nth-child(3) {
+    order: 2;
+  }
+
   .price-card {
     min-height: 0;
   }
