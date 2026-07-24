@@ -53,7 +53,7 @@ module.exports = async function googleReviews(request, response) {
 
     response.writeHead(200, {
       "content-type": "application/json; charset=utf-8",
-      "cache-control": "public, s-maxage=21600, stale-while-revalidate=3600"
+      "cache-control": "public, s-maxage=86400, stale-while-revalidate=3600"
     });
     response.end(
       JSON.stringify({
