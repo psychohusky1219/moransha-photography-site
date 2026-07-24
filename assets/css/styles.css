@@ -447,6 +447,30 @@ button {
   flex-shrink: 0;
 }
 
+.reviews-google-wordmark {
+  display: none;
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.reviews-google-wordmark .g-blue {
+  color: #4285f4;
+}
+
+.reviews-google-wordmark .g-red {
+  color: #ea4335;
+}
+
+.reviews-google-wordmark .g-yellow {
+  color: #fbbc05;
+}
+
+.reviews-google-wordmark .g-green {
+  color: #34a853;
+}
+
 .reviews-tier {
   font-family: "Inter", Arial, sans-serif;
   font-size: 1rem;
@@ -668,6 +692,15 @@ button {
     justify-content: center;
   }
 
+  .reviews-google-logo {
+    display: none;
+  }
+
+  .reviews-google-wordmark {
+    display: block;
+    width: 100%;
+  }
+
   .reviews-divider {
     display: none;
   }
@@ -675,6 +708,18 @@ button {
   .reviews-write-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .reviews-nav {
+    display: none;
+  }
+
+  .reviews-track {
+    padding-left: 0.25rem;
+  }
+
+  .review-card {
+    width: 85%;
   }
 }
 
